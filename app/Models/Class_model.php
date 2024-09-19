@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Turma_model extends Model
+class Class_model extends Model
 {
     use HasFactory;
   
@@ -14,13 +14,13 @@ class Turma_model extends Model
     {
         return $this->belongsTo(User::class);
     }
-    protected $table = 'turmas';
-    public $turma = 'turma_name  turma_ano';
+    protected $table = 'studentclass';
+    public $turma = 'class_name  class_year';
     protected $fillable = [
-        'turma_name',
-        'turma_ano',
-        'turma',
-        'ano'
+        'class_name',
+        'class_ano',
+        'class',
+        'year'
     ];
   
 }

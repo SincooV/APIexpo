@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->foreignId('turma_id');
+            $table->foreignId('class_id');
+            $table->foreignId('course_id');
             $table->timestamp('email_verified_at')->nullable();
-            $table->foreign('turma_id')->references('id')->on('turmas')->onDelete('cascade');
+            $table->string('ra', 7);
+            $table->foreign('class_id')->references('id')->on('studentclass')->onDelete('cascade');
             $table->string('password');
+            $table->string('period');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -10,7 +10,7 @@ class Presentes_model extends Model
     use HasFactory;
 
    
-    protected $table = 'presencas';
+    protected $table = 'presence';
 
         public function user()
         {
@@ -18,8 +18,8 @@ class Presentes_model extends Model
         }
 
     protected $fillable = [
-        'user_id',
-        'turma_id'
+        'student_id',
+        'class_id'
     ];
 
 }

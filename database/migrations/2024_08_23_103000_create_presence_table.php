@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('presencas', function (Blueprint $table) {
+        Schema::create('presence', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id');
-  
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('student_id');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             
 
         });
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('presencas');
+        Schema::dropIfExists('presence');
     }
 };

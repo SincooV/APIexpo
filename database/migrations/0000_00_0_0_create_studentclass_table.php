@@ -9,12 +9,12 @@ return new class extends Migration
     
     public function up(): void
     {
-        Schema::create('turmas', function (Blueprint $table) {
+        Schema::create('studentclass', function (Blueprint $table) {
             $table->id();
-            $table->char('turma_name');
-            $table->integer('turma_ano');
-            $table->integer('ano');
-            $table->string('turma')->unique();
+            $table->char('class_name');
+            $table->integer('class_year');
+            $table->integer('year');
+            $table->string('class')->unique();
             $table->timestamp('created_at')-> nullable();
             $table->timestamp('updated_at')->nullable();    
         });

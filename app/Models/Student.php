@@ -4,11 +4,11 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\Student as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Student extends Authenticatable
 {
     use HasFactory,HasApiTokens, Notifiable;
     
@@ -18,7 +18,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'turma_id',
+        'class_id',
+        'ra',
+        'period',
         
     ];
     

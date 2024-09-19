@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Student;
 use Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Laravel\Sanctum\Sanctum;
 
-class UserController extends Controller
+class StudentController extends Controller
 {
     
     public function index()
     {
-        return User::all();
+        return Student::all();
     }
 
   
@@ -25,14 +25,14 @@ class UserController extends Controller
             'name' => 'max:35|required',
             'email' => 'max:40|required',
             'password' => 'max:20|required',
-            'turma_id'=> ''
+            'class_id'=> ''
             
     ]);}
    
     catch(ValidationException $e){
         return Response::json(['error' => $e]);
     }
-    $register = User::create($valid);
+    $register = Student::create($valid);
   
     return Response::json(['register' => $register ]);
 
@@ -41,22 +41,22 @@ class UserController extends Controller
    
     public function show($id)
     {
-        $turma = User::find($id);
-        if (!$turma) {
+        $class = Student::find($id);
+        if (!$class) {
             return response()->json([
-                'message' => 'turma não encontrada.'
+                'message' => 'class não encontrada.'
             ], 404);
         }
 
-        $turmas2 = DB::table('users')
-        ->join('turmas', 'users.turma_id', '=', 'turmas.id')
-        ->where('users.id', 'LIKE', '%' . $id . '%')
-        ->select('turmas.*')  
+        $classs2 = DB::table('Students')
+        ->join('class', 'Students.class_id', '=', 'class.id')
+        ->where('Students.id', 'LIKE', '%' . $id . '%')
+        ->select('studentclass.*')  
         ->get();
 
         return response()->json([
-            'message' => 'Detalhes da turma.',
-            'data' => $turma
+            'message' => 'Detalhes da class.',
+            'data' => $class
 
 
         ]);  
@@ -68,12 +68,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
        
-        $turma = User::findOrFail($id);
+        $class = Student::findOrFail($id);
          $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'turma_id'=> 'required'
+            'class_id'=> 'required'
          
          ]);
          
@@ -81,13 +81,13 @@ class UserController extends Controller
         
 
     
-        $turma->fill($validatedData);
-        $turma->save();
+        $class->fill($validatedData);
+        $class->save();
 
 
         return Response::json([
-            'message' => 'user atualizado com sucesso.',
-            'data' => $turma
+            'message' => 'Student atualizado com sucesso.',
+            'data' => $class
         ]);
     }
 
@@ -97,18 +97,18 @@ class UserController extends Controller
     public function patch(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'turma_id' => 'sometimes|integer',
+            'class_id' => 'sometimes|integer',
         ]);
 
       
-        $turma = User::findOrFail($id);
+        $class = Student::findOrFail($id);
 
        
-        $turma->update($validatedData);
+        $class->update($validatedData);
 
         return response()->json([
-            'message' => 'Turma atualizada com sucesso.',
-            'data' => $turma
+            'message' => 'class atualizada com sucesso.',
+            'data' => $class
         ]);
    }
 
@@ -116,18 +116,18 @@ class UserController extends Controller
      
     public function destroy(string $id)
     {
-        $turma = User::find($id);
+        $class = Student::find($id);
 
-        if (!$turma) {
+        if (!$class) {
             return response()->json([
-                'message' => 'User não encontrado.'
+                'message' => 'Student não encontrado.'
             ], 404);
         }
 
-        $turma->delete();
+        $class->delete();
 
         return response()->json([
-            'message' => 'User deletado com sucesso.'
+            'message' => 'Student deletado com sucesso.'
         ]);
 
     }
@@ -144,18 +144,18 @@ class UserController extends Controller
             ]);
         }
 
-        $user = Auth::user();
-        $token = $user->createToken('Personal Access Token')->plainTextToken;
+        $Student = Auth::Student();
+        $token = $Student->createToken('Personal Access Token')->plainTextToken;
 
         return response()->json([
             'message' => 'Login bem-sucedido.',
             'token' => $token,
-            'user' => $user
+            'Student' => $Student
         ]);
     }
       public function logout(Request $request)
     {
-        $request->user()->tokens()->delete();
+        $request->Student()->tokens()->delete();
 
         return response()->json([
             'message' => 'Logout realizado com sucesso.'
