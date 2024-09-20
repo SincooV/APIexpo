@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Student;
+use App\Models\User;
 use Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +15,7 @@ class StudentController extends Controller
     
     public function index()
     {
-        return Student::all();
+        return User::all();
     }
 
   
@@ -32,7 +32,7 @@ class StudentController extends Controller
     catch(ValidationException $e){
         return Response::json(['error' => $e]);
     }
-    $register = Student::create($valid);
+    $register = User::create($valid);
   
     return Response::json(['register' => $register ]);
 
@@ -41,7 +41,7 @@ class StudentController extends Controller
    
     public function show($id)
     {
-        $class = Student::find($id);
+        $class = User::find($id);
         if (!$class) {
             return response()->json([
                 'message' => 'class não encontrada.'
@@ -144,7 +144,7 @@ class StudentController extends Controller
             ]);
         }
 
-        $Student = Auth::Student();
+        $Student = Auth::User();
         $token = $Student->createToken('Personal Access Token')->plainTextToken;
 
         return response()->json([
@@ -155,7 +155,7 @@ class StudentController extends Controller
     }
       public function logout(Request $request)
     {
-        $request->Student()->tokens()->delete();
+        $request->User()->tokens()->delete();
 
         return response()->json([
             'message' => 'Logout realizado com sucesso.'

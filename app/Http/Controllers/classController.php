@@ -13,7 +13,7 @@ class classController extends Controller
     
     public function index()
     {
-        return class_model::all();
+        return Class_model::all();
     }
 
    
@@ -26,10 +26,10 @@ class classController extends Controller
             'year' => 'required|integer'
         ]);
 
-        $soma = $validatedData['class_name'] . $validatedData['class_ano'] . $validatedData['ano'];
+        $soma = $validatedData['class_name'] . $validatedData['class_year'] . $validatedData['year'];
 
        
-        $registro = class_model::create([
+        $registro = Class_model::create([
             'class_name' => $validatedData['class_name'],
             'class_year' => $validatedData['class_year'],
             'year' => $validatedData['year'],
@@ -42,7 +42,7 @@ class classController extends Controller
     
     public function show(string $id)
     {
-        $class = class_model::find($id);
+        $class = Class_model::find($id);
         if (!$class) {
             return response()->json([
                 'message' => 'class não encontrada.'
@@ -68,7 +68,7 @@ class classController extends Controller
 
     public function destroy(string $id)
     {
-        $class = class_model::find($id);
+        $class = Class_model::find($id);
 
         if (!$class) {
             return response()->json([

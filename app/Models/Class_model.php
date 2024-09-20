@@ -18,7 +18,7 @@ class Class_model extends Model
     public $turma = 'class_name  class_year';
     protected $fillable = [
         'class_name',
-        'class_ano',
+        'class_year',
         'class',
         'year'
     ];
