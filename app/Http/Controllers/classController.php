@@ -7,6 +7,7 @@ use App\Models\Class_model;
 use Response;
 use App\Http\StudentController;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 class classController extends Controller
 {
    
@@ -34,6 +35,7 @@ class classController extends Controller
             'class_year' => $validatedData['class_year'],
             'year' => $validatedData['year'],
             'class' => $soma,
+            
         ]);
 
         return response()->json($registro, 201);
@@ -86,13 +88,13 @@ class classController extends Controller
 {
     
     $results = DB::table('studentclass')
-        ->join('users', 'studentclass.id', '=', 'users.class_id')
+        ->join('students', 'studentclass.id', '=', 'students.class_id')
         ->where('studentclass.class', $id)
-        ->select('users.id', 'users.name', 'users.email' , 'users.created_at', 'users.updated_at') 
+        ->select('students.id', 'students.name', 'students.email' , 'students.created_at', 'students.updated_at') 
         ->get();
- 
     
-    return Response::json(['alunos' => $results]);
+    
+    return Response::json(['students' => $results]);
 }
 
         
@@ -104,7 +106,7 @@ class classController extends Controller
 
     
         $studentclass = DB::table('studentclass')
-        ->join('users', 'users.class_id', '=', 'studentclass.id')
+        ->join('students', 'students.class_id', '=', 'studentclass.id')
         ->where('class', 'LIKE', '%' . $id . '%') 
         ->select('studentclass.*')  
         ->get();

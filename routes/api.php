@@ -17,7 +17,7 @@ Route::patch('/user/{id}', [StudentController::class, 'patch' ]);
 Route::put('/users/{id}', [StudentController::class, 'update' ]);  
 Route::post('/presentes/search/{turmaName}', [presenceController::class, 'storePresence']);
 Route::post('/user', [StudentController::class, 'store']);
-Route::get('/turmas/search/{id}', [classController::class, 'searchByTurma' ]);
+Route::get('/turmas/search/{id}', [classController::class, 'searchByClass' ]);
 Route::get('/turmas/by-aluno/{id}', [classController::class, 'searchByAluno']);
 Route::middleware('throttle:api')->group(function () {
     Route::post('/login', [StudentController::class, 'login']);

@@ -18,9 +18,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'class_id',
+        'class_id', 
         'ra',
-        'period',
+        'period'
         
     ];
     

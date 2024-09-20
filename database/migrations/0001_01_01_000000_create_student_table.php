@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->foreignId('class_id');
-            $table->foreignId('course_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('ra', 7);
             $table->foreign('class_id')->references('id')->on('studentclass')->onDelete('cascade');
@@ -47,7 +46,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('students');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }

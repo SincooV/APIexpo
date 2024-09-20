@@ -25,6 +25,8 @@ class StudentController extends Controller
             'name' => 'max:35|required',
             'email' => 'max:40|required',
             'password' => 'max:20|required',
+            'period' => 'max:10|required',
+            'ra' => 'required',
             'class_id'=> ''
             
     ]);}
