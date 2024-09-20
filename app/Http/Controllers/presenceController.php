@@ -9,7 +9,7 @@ use App\Models\Student;
 use App\Models\Class_model;
 use Illuminate\Support\Facades\DB;
 use Log;
-class Presenca extends Controller
+class presenceController extends Controller
 {
    
     public function index()
@@ -23,8 +23,7 @@ class Presenca extends Controller
     {
  
         try {  $valid = $request -> validate([
-            'student_id'=> '', 
-            'class_id'=> ''
+            'student_id'=> 'required', 
             
     ]);}
    
