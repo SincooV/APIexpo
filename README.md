@@ -1,4 +1,9 @@
-Trabalho AOS Grupo, Vitor Tavares leite , Ana Júlia coutinho Souza , Caio Makoto ,Mateus Tavares e Bruno lima 
+Trabalho AOS Grupo:
+`Vitor Tavares leite`,
+`Ana Júlia coutinho Souza`,
+`Caio Makoto `,
+`Mateus Tavares` ,
+`Bruno lima`
 
 # Consuming this API:
 
