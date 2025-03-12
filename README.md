@@ -1,8 +1,9 @@
 Trabalho AOS Grupo:
 `Vitor Tavares leite`,
-`Ana Júlia coutinho Souza`,
-
-
+A verdade é que eu fiz isso tudo sozinho
+não quiseram me ajudar.
+¯\_(ツ)_/¯
+EN :  The truth is that I did this alone; no one wanted to help me at that time. I think I deserve this credit."
 # Consuming this API:
 
 ## API supports login and sign up with a post method in endpoint /api/login/
