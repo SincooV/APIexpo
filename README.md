@@ -1,5 +1,5 @@
 Trabalho AOS Grupo:
-`Vitor Tavares leite`,
+`Vitor Tavares Leite`,
 A verdade é que eu fiz isso tudo sozinho
 não quiseram me ajudar.
 ¯\_(ツ)_/¯
